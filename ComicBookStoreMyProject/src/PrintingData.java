@@ -1,8 +1,10 @@
 import java.math.BigDecimal;
 import java.util.Scanner;
 
-public class PrintingData {                                     // Класс для печати и ввода информации
+public class PrintingData {                                            // Класс для печати и ввода информации
     static Scanner scanner = new Scanner(System.in);
+    public static final String deleteComic = "Комикс удалён";
+    public static final String deleteNoNComic = "Комикс не найдён поэтому не может быть удалён";
 
     private static String dataInputString() {                          // Метод ввода данных по стороке
         return scanner.nextLine();
@@ -11,7 +13,12 @@ public class PrintingData {                                     // Класс д
     private static int dataInputInteger() {                           // Метод ввода данных с проверкой на стоимость
         String string = scanner.nextLine();
         try {
-            return Integer.parseInt(string);
+            int value = Integer.parseInt(string);
+            if (value > 0) {
+                return value;
+            } else {
+                throw new NumberFormatException();
+            }
         } catch (NumberFormatException e) {
             System.out.println("Введены некоректные данные. Введите значение ещё раз");
         }
@@ -21,7 +28,12 @@ public class PrintingData {                                     // Класс д
     private static double dataInputDouble() {                           // Метод ввода данных с проверкой на число
         String string = scanner.nextLine();
         try {
-            return Double.parseDouble(string);
+            double value = Double.parseDouble(string);
+            if (value > 0) {
+                return value;
+            } else {
+                throw new NumberFormatException();
+            }
         } catch (NumberFormatException e) {
             System.out.println("Введены некоректные данные. Введите значение ещё раз");
         }
@@ -39,7 +51,7 @@ public class PrintingData {                                     // Класс д
 
     private static int checkYear() {                                     // Проверка соответствия года выпуска
         int yearOfPublication = dataInputInteger();
-        while (yearOfPublication < 1900 || yearOfPublication > 2021) {                             //
+        while (yearOfPublication < 1900 || yearOfPublication > 2021) {
             System.out.println("Неверный год издания");
             yearOfPublication = dataInputInteger();
         }
@@ -110,7 +122,7 @@ public class PrintingData {                                     // Класс д
         return checkYear();
     }
 
-    public static String enterСomicBookSeries() {                        // Ввод серии комиксов
+    public static String enterComicBookSeries() {                        // Ввод серии комиксов
         System.out.println("Введите серию комиксов");
         return dataInputString();
     }
@@ -120,9 +132,18 @@ public class PrintingData {                                     // Класс д
         return dataInputInteger();
     }
 
-    public static Enum<GenreComics> enterGenreComics() {
+    public static Enum<GenreComics> enterGenreComics() {                // Ввод жанра комиксов
         System.out.println("Введите жанр комикса");
         return checkGenreComics();
+    }
+
+    public static int enterComicId() {                                   // Ввод количества комиксов
+        System.out.println("Введите ID комикса");
+        return dataInputInteger();
+    }
+
+    public static void writeOffComicBook(){
+        System.out.println("Количество комиксов в магазине меньше чем Вы хотите списать");
     }
 
     public static void closeScanner() {

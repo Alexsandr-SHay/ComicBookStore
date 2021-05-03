@@ -2,7 +2,7 @@ import java.math.BigDecimal;
 
 public class ComicBook {
     private static int id = 1;                           //Статический индификатор занесённых комиксов
-    private int idComic;                                 // Индификатор конкретного комикса
+    private final int idComic;                           // Индификатор конкретного комикса
     private String comicBookName;                        // Название коммикса
     private String fullNameAuthor;                       // ФИО автора
     private String comicBookPublisher;                   // Издательство коммикса
@@ -27,6 +27,8 @@ public class ComicBook {
         this.yearPublication = yearPublication;
         this.comicBookSeries = comicBookSeries;
         this.numberOfComics = numberOfComics;
+        id++;
+        idComic = id;
     }
 
     public ComicBook() {
