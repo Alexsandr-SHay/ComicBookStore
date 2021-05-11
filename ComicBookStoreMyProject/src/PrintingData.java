@@ -1,10 +1,13 @@
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
-public class PrintingData {                                            // Класс для печати и ввода информации
+public class PrintingData {                                     // Класс для печати и ввода информации
     static Scanner scanner = new Scanner(System.in);
-    public static final String deleteComic = "Комикс удалён";
-    public static final String deleteNoNComic = "Комикс не найдён поэтому не может быть удалён";
+    public static final String deleteComic = "Комикс удалён";                                       //todo
+    public static final String deleteNoNComic = "Комикс не найдён поэтому не может быть удалён";    // todo
 
     private static String dataInputString() {                          // Метод ввода данных по стороке
         return scanner.nextLine();
@@ -144,6 +147,42 @@ public class PrintingData {                                            // Кла
 
     public static void writeOffComicBook(){
         System.out.println("Количество комиксов в магазине меньше чем Вы хотите списать");
+    }
+
+    public static String enterClient() {                                // Ввод имени клиента
+        System.out.println("Введите полную Фамилию, Имя, Отчество(если имеется)");
+        return dataInputString();
+    }
+
+    public static int enterClientId() {                                // Ввод имени клиента
+        System.out.println("Введите ID клиента");
+        return dataInputInteger();
+    }
+
+    public static LocalDate enterDateComics() {                     // Ввод даты
+        System.out.println("Введите дату в формате dd.MM.yyyy");
+        return enterDate();
+
+    }
+
+    public static BigDecimal enterSale(){                                  // Ввод скидки
+        System.out.println("Введите % скидки");
+        return dataInputBigDecimal();
+    }
+
+    public static LocalDate enterDate() {
+        try {
+            LocalDate date1 = LocalDate.parse(scanner.nextLine(), DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+            LocalDate date2 = LocalDate.now().plusMonths(1);
+            if (date1.isBefore(date2)){
+                return date1;
+            } else {
+                System.out.println("Введена неверная дата");
+            }
+        } catch (DateTimeParseException e) {
+            System.out.println("Введена некоретная дата");
+        }
+        return enterDate();
     }
 
     public static void closeScanner() {

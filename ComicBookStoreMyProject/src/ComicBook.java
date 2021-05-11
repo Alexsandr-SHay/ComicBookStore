@@ -1,22 +1,29 @@
 import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
-public class ComicBook {
-    private static int id = 1;                           //Статический индификатор занесённых комиксов
-    private final int idComic;                           // Индификатор конкретного комикса
-    private String comicBookName;                        // Название коммикса
-    private String fullNameAuthor;                       // ФИО автора
-    private String comicBookPublisher;                   // Издательство коммикса
-    private int numberOfPages;                           // Количестов страниц
-    private Enum<GenreComics> genreComics;               // Жанр комикса
-    private BigDecimal costPrice;                        // Себестоймость комикса
-    private BigDecimal salePrice;                        // Цена продажи
-    private int yearPublication;                         // Год издания
-    private String comicBookSeries;                      // Серия комиксов Todo Может сделать Enum или даже списком??
-    private int numberOfComics;                          // Количество комиксов
+
+
+public class ComicBook implements Cloneable {
+    private static int id = 1;                         //Статический индификатор занесённых комиксов
+    private final int idComic;                               // Индификатор конкретного комикса
+    private String comicBookName;                      // Название коммикса
+    private String fullNameAuthor;                     // ФИО автора
+    private String comicBookPublisher;                 // Издательство коммикса
+    private int numberOfPages;                         // Количестов страниц
+    private Enum<GenreComics> genreComics;             // Жанр комикса
+    private BigDecimal costPrice;                      // Себестоймость комикса
+    private BigDecimal salePrice;                      // Цена продажи
+    private int yearPublication;                       // Год издания
+    private String comicBookSeries;                    // Серия комиксов Todo Может сделать Enum или даже списком??
+    private int numberOfComics;                        // Количество комиксов в магазине / количество проданных комиксов
+    private LocalDate inputData;                       // Дата появления в магазине / дата продажи
 
     public ComicBook(String comicBookName, String fullNameAuthor, String comicBookPublisher, int numberOfPages,
                      Enum<GenreComics> genreComics, BigDecimal costPrice, BigDecimal salePrice, int yearPublication,
-                     String comicBookSeries, int numberOfComics) {
+                     String comicBookSeries, int numberOfComics, String inputData) {
         this.comicBookName = comicBookName;
         this.fullNameAuthor = fullNameAuthor;
         this.comicBookPublisher = comicBookPublisher;
@@ -27,6 +34,12 @@ public class ComicBook {
         this.yearPublication = yearPublication;
         this.comicBookSeries = comicBookSeries;
         this.numberOfComics = numberOfComics;
+        try {
+            this.inputData = LocalDate.parse(inputData, DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+        } catch (DateTimeParseException e) {
+            System.out.println("Введена некоректная дата" + e);
+            this.inputData = LocalDate.now();
+        }
         id++;
         idComic = id;
     }
@@ -124,20 +137,34 @@ public class ComicBook {
         this.numberOfComics = numberOfComics;
     }
 
+    public LocalDate getInputData() {
+        return inputData;
+    }
+
+    public void setInputData(LocalDate inputData) {
+        this.inputData = inputData;
+    }
+
     @Override
     public String toString() {
         return "ComicBook{" +
                 "ID Комикса = " + idComic +
                 ", Название комикса - " + comicBookName +
-                ", Количество комиксов в магазине = " + numberOfComics +
+                ", Количество комиксов = " + numberOfComics +
                 ", ФИО автора - " + fullNameAuthor +
                 ", Название издательства - " + comicBookPublisher +
                 ", Количество страниц = " + numberOfPages +
                 ", Жанр - " + genreComics +
-                ", Закупочная цена = " + costPrice +
-                ", Цена продажи = " + salePrice +
+                ", Закупочная цена = " + costPrice.setScale(2, RoundingMode.CEILING) +
+                ", Цена продажи = " + salePrice.setScale(2, RoundingMode.CEILING) +
                 ", Год издания - " + yearPublication +
                 ", Серия комиксов - " + comicBookSeries +
+                ", Дата появления - " + inputData.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")) +
                 '}' + '\n';
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }
