@@ -1,14 +1,24 @@
+package domain;
+
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
+/**
+ * Класс комикс хранит в себе всю информацию о комиксе:
+ * id комикса(idComic), название(comicBookName), ФИО автора(fullNameAuthor), название издательства(comicBookPublisher),
+ * количество страниц(numberOfPages), жанр комикса(genreComics), себестоймость комикса(Себестоймость комикса),
+ * цена продажи(Цена продажи), год издания(yearPublication), серию комиксов(Серия комиксов),
+ * количество комиксов в магазине(numberOfComics), дата появления в магазине(inputData).
+ * Основные методы реализованные в данном классе это сеттеры и гетеры и переопределённые методы toString() и clone().
+ */
 
-
-public class ComicBook implements Cloneable {
+public class ComicBook implements Cloneable, Serializable {
     private static int id = 1;                         //Статический индификатор занесённых комиксов
-    private final int idComic;                               // Индификатор конкретного комикса
+    private final int idComic;                         // Индификатор конкретного комикса
     private String comicBookName;                      // Название коммикса
     private String fullNameAuthor;                     // ФИО автора
     private String comicBookPublisher;                 // Издательство коммикса
@@ -17,9 +27,13 @@ public class ComicBook implements Cloneable {
     private BigDecimal costPrice;                      // Себестоймость комикса
     private BigDecimal salePrice;                      // Цена продажи
     private int yearPublication;                       // Год издания
-    private String comicBookSeries;                    // Серия комиксов Todo Может сделать Enum или даже списком??
+    private String comicBookSeries;                    // Серия комиксов
     private int numberOfComics;                        // Количество комиксов в магазине / количество проданных комиксов
     private LocalDate inputData;                       // Дата появления в магазине / дата продажи
+
+    /**
+     * Конструктор для чтения из файла.
+     */
 
     public ComicBook(String comicBookName, String fullNameAuthor, String comicBookPublisher, int numberOfPages,
                      Enum<GenreComics> genreComics, BigDecimal costPrice, BigDecimal salePrice, int yearPublication,
@@ -37,12 +51,14 @@ public class ComicBook implements Cloneable {
         try {
             this.inputData = LocalDate.parse(inputData, DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         } catch (DateTimeParseException e) {
-            System.out.println("Введена некоректная дата" + e);
-            this.inputData = LocalDate.now();
-        }
+            this.inputData = LocalDate.now();        }
         id++;
         idComic = id;
     }
+
+    /**
+     * Контруктор при создании объекта через ввод данных.
+     */
 
     public ComicBook() {
         id++;
@@ -147,7 +163,7 @@ public class ComicBook implements Cloneable {
 
     @Override
     public String toString() {
-        return "ComicBook{" +
+        return "Комикс " +
                 "ID Комикса = " + idComic +
                 ", Название комикса - " + comicBookName +
                 ", Количество комиксов = " + numberOfComics +
@@ -159,12 +175,11 @@ public class ComicBook implements Cloneable {
                 ", Цена продажи = " + salePrice.setScale(2, RoundingMode.CEILING) +
                 ", Год издания - " + yearPublication +
                 ", Серия комиксов - " + comicBookSeries +
-                ", Дата появления - " + inputData.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")) +
-                '}' + '\n';
+                ", Дата появления - " + inputData.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")) + '\n';
     }
 
     @Override
-    protected Object clone() throws CloneNotSupportedException {
+    public Object clone() throws CloneNotSupportedException {
         return super.clone();
     }
 }

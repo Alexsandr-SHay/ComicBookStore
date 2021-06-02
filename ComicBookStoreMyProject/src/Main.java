@@ -1,3 +1,8 @@
+import domain.Client;
+import domain.ComicBook;
+import domain.GenreComics;
+import services.ComicBookSalesman;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -69,11 +74,11 @@ public class Main {
         );
     }
 
-    private static List<Client> getClient() {
+    private static List<Client> getClient(){
         return List.of(
-                new Client("Сидоров Алексей", new ArrayList<>()),
-                new Client("Иванов Иван", new ArrayList<>()),
-                new Client("Петров Пётр", new ArrayList<>()));
+                new Client("Сидоров Алексей", new ArrayList<>(), "89991234567"),
+                new Client("Иванов Иван", new ArrayList<>(), "89992345678"),
+                new Client("Петров Пётр", new ArrayList<>(), "89993456789"));
     }
 
 

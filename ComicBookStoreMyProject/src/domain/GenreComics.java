@@ -1,3 +1,9 @@
+package domain;
+
+/**
+ * Enum списка жанров комикса
+ */
+
 public enum GenreComics {
     DETECTIVE,
     HORROR,
@@ -10,3 +16,4 @@ public enum GenreComics {
     OTHER
 
 }
+
