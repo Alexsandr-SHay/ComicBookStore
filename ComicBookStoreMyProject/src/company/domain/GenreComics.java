@@ -1,4 +1,4 @@
-package domain;
+package company.domain;
 
 /**
  * Enum списка жанров комикса
@@ -16,4 +16,3 @@ public enum GenreComics {
     OTHER
 
 }
-
