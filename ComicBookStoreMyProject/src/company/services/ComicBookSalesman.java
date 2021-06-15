@@ -35,12 +35,6 @@ public class ComicBookSalesman implements Cloneable, Serializable {
 
     }
 
-    public ComicBookSalesman(List<ComicBook> listComic, List<ComicBook> listComicsSold, List<Client> clientList) {
-        this.listComic = listComic;
-        this.listComicsSold = listComicsSold;
-        this.clientList = clientList;
-    }
-
     public List<ComicBook> getListComic() {
         return listComic;
     }

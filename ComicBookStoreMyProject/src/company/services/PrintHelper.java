@@ -3,6 +3,7 @@ package company.services;
 import company.domain.Client;
 import company.domain.GenreComics;
 
+import java.io.File;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Locale;
@@ -17,6 +18,7 @@ public class PrintHelper {
 
     private static List listResult;
     public static String resultString = "";
+    public static String separator = File.separator;
     public static final String ADDRESS_START_MENU = "fileFXML/sample.fxml";
     public static final String ADDRESS_RETURN_MENU = "fileFXML/menuScreen.fxml";
     public static final String ADDRESS_ADD_COMIC = "fileFXML/menuAddAndEditComic.fxml";
@@ -27,9 +29,12 @@ public class PrintHelper {
     public static final String ADDRESS_MENU_CLIENT = "fileFXML/menuClient.fxml";
     public static final String ADDRESS_SEARCH_SCREEN = "fileFXML/catalogSearchResult.fxml";
 
-    public static final String SAVE_AND_READ_LIST_COMIC = "listComic.bin";
-    public static final String SAVE_AND_READ_LIST_COMIC_SOLD = "listComicSold.bin";
-    public static final String SAVE_AND_READ_LIST_CLIENT = "clientList.bin";
+    public static final String SAVE_AND_READ_LIST_COMIC = "ComicBookStoreMyProject" + separator + "src" +
+                    separator + "company" + separator + "repository" + separator + "file" + separator + "listComic.bin";
+    public static final String SAVE_AND_READ_LIST_COMIC_SOLD = "ComicBookStoreMyProject" + separator + "src" +
+            separator + "company" + separator + "repository" + separator + "file" + separator + "listComicSold.bin";
+    public static final String SAVE_AND_READ_LIST_CLIENT = "ComicBookStoreMyProject" + separator + "src" +
+            separator + "company" + separator + "repository" + separator + "file" + separator + "clientList.bin";
 
     public static final String COMIC_EXISTS = "Комикс с таким названием существует его количество увеличенно на ";
     public static final String COMIC_BOOK_ADDED = "Комикс добавлен";

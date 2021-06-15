@@ -32,15 +32,12 @@ public class ReadComicAndClient {
     }
 
     private void readComicBook(List<ComicBook> arrays, String way) {
-        try {
-            FileInputStream fis = new FileInputStream(way);
-            ObjectInputStream ois = new ObjectInputStream(fis);
+        try (FileInputStream fis = new FileInputStream(way);  ObjectInputStream ois = new ObjectInputStream(fis) ){
             int count = ois.readInt();
             for (int i = 0; i < count; i++) {
                 arrays.add((ComicBook) ois.readObject());
             }
-            fis.close();
-            ois.close();
+
             defineTheComicBookId(arrays.get(count-1).getIdComic());
 
         } catch (IOException | ClassNotFoundException e) {
@@ -53,15 +50,11 @@ public class ReadComicAndClient {
     }
 
     private void readClient(List<Client> arrays, String way) {
-        try {
-            FileInputStream fis = new FileInputStream(way);
-            ObjectInputStream ois = new ObjectInputStream(fis);
+        try (FileInputStream fis = new FileInputStream(way); ObjectInputStream ois = new ObjectInputStream(fis)){
             int count = ois.readInt();
             for (int i = 0; i < count; i++) {
                 arrays.add((Client) ois.readObject());
             }
-            fis.close();
-            ois.close();
             defineTheClientId(arrays.get(count-1).getId());
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
