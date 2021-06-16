@@ -14,7 +14,7 @@ import java.util.List;
  * Класс для сохранения данных о магазине комиксов
  */
 
-public class SaveComicBookAndClient {
+public class SaveComicBookAndClientRepository {
 
     public void saveAll(){
         saveListComics();
@@ -35,15 +35,11 @@ public class SaveComicBookAndClient {
         for (int i = 0; i < comicBooks.length; i++) {
             comicBooks[i] = arrays.get(i);
         }
-        try {
-            FileOutputStream fos = new FileOutputStream(way);
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
+        try (FileOutputStream fos = new FileOutputStream(way);  ObjectOutputStream oos = new ObjectOutputStream(fos)){
             oos.writeInt(comicBooks.length);
             for (ComicBook comicBook : comicBooks) {
                 oos.writeObject(comicBook);
             }
-            fos.close();
-            oos.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -58,15 +54,11 @@ public class SaveComicBookAndClient {
         for (int i = 0; i < clients.length; i++) {
             clients[i] = arrays.get(i);
         }
-        try {
-            FileOutputStream fos = new FileOutputStream(way);
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
+        try (FileOutputStream fos = new FileOutputStream(way); ObjectOutputStream oos = new ObjectOutputStream(fos)){
             oos.writeInt(clients.length);
             for (Client client : clients) {
                 oos.writeObject(client);
             }
-            fos.close();
-            oos.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

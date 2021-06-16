@@ -11,23 +11,23 @@ import java.util.Objects;
  * Основные методы реализованные в данном классе: Сеттеры и гетеры и переопределённый метод toString()
  */
 public class Client implements Serializable {
-    private static int idClient = 100_000;
-    private final int id;
+    private static int idCounterOfClient = 100_000;
+    private final int idClient;
     private String fullName;
     private List<ComicBook> reservingComics;
     private String phone;
 
     public Client() {
-        idClient++;
-        id = idClient;
+        idCounterOfClient++;
+        idClient = idCounterOfClient;
     }
 
     public Client(String fullName, List<ComicBook> reservingComics, String phone) {
         this.fullName = fullName;
         this.reservingComics = reservingComics;
         this.phone = phone;
-        idClient++;
-        id = idClient;
+        idCounterOfClient++;
+        idClient = idCounterOfClient;
     }
 
     public String getFullName() {
@@ -42,8 +42,8 @@ public class Client implements Serializable {
         return reservingComics;
     }
 
-    public int getId() {
-        return id;
+    public int getIdClient() {
+        return idClient;
     }
 
     public void setPhone(String phone) {
@@ -55,13 +55,13 @@ public class Client implements Serializable {
     }
 
     public void warningSetClientId(int id){
-        idClient = id;
+        idCounterOfClient = id;
     }
 
     @Override
     public String toString() {
         return "Клиент " +
-                "id " + id + ';' +
+                "id " + idClient + ';' +
                 ", ФИО клиента " + fullName + ';' +
                 ", Номер телефона " + phone + ';' + '\n' +
                 ", Список зарезервированных комиксов " + reservingComics + '\n' + '\n';
@@ -72,12 +72,12 @@ public class Client implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Client client = (Client) o;
-        return id == client.id && Objects.equals(fullName, client.fullName) && Objects.equals(reservingComics,
+        return idClient == client.idClient && Objects.equals(fullName, client.fullName) && Objects.equals(reservingComics,
                 client.reservingComics) && Objects.equals(phone, client.phone);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, fullName, reservingComics, phone);
+        return Objects.hash(idClient, fullName, reservingComics, phone);
     }
 }

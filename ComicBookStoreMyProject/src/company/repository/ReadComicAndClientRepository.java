@@ -15,7 +15,7 @@ import java.util.List;
  * Класс для чтения данных при загрузке программы
  */
 
-public class ReadComicAndClient {
+public class ReadComicAndClientRepository {
 
     public void readAll(){
         readListComics();
@@ -37,9 +37,7 @@ public class ReadComicAndClient {
             for (int i = 0; i < count; i++) {
                 arrays.add((ComicBook) ois.readObject());
             }
-
             defineTheComicBookId(arrays.get(count-1).getIdComic());
-
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -55,7 +53,7 @@ public class ReadComicAndClient {
             for (int i = 0; i < count; i++) {
                 arrays.add((Client) ois.readObject());
             }
-            defineTheClientId(arrays.get(count-1).getId());
+            defineTheClientId(arrays.get(count-1).getIdClient());
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }

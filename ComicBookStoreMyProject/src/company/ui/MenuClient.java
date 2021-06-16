@@ -85,7 +85,7 @@ public class MenuClient {
         String textClient = fieldNameClient.getText();
         String textPhone = fieldNumberPhone.getText();
         try {
-            labelResult.setText(PrintHelper.CLIENT_EXISTS + Main.comicBookSalesman.searchClientOnName(textClient).getId());
+            labelResult.setText(PrintHelper.CLIENT_EXISTS + Main.comicBookSalesman.searchClientOnName(textClient).getIdClient());
         } catch (NoSuchElementException ignored) {
             if (!textClient.isEmpty() && !textPhone.isEmpty()) {
                 Main.comicBookSalesman.addClient(new Client(textClient, new ArrayList<>(),

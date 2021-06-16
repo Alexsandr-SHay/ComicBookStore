@@ -627,7 +627,7 @@ public class ComicBookSalesman implements Cloneable, Serializable {
 
     public Client searchClientOnId(int id) {
         return clientList.stream()
-                .filter(clientId -> clientId.getId() == id)
+                .filter(clientId -> clientId.getIdClient() == id)
                 .findFirst().get();
     }
 

@@ -19,7 +19,7 @@ import static company.domain.GenreComics.COMEDY;
  */
 
 public class ComicBook implements Cloneable, Serializable {
-    private static int id = 1;                         //Статический индификатор занесённых комиксов
+    private static int idCounterOfComics = 1;          //Статический индификатор занесённых комиксов
     private final int idComic;                         // Индификатор конкретного комикса
     private String comicBookName;                      // Название коммикса
     private String fullNameAuthor;                     // ФИО автора
@@ -54,38 +54,21 @@ public class ComicBook implements Cloneable, Serializable {
             this.inputData = LocalDate.parse(inputData, DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         } catch (DateTimeParseException e) {
             this.inputData = LocalDate.now();        }
-        id++;
-        idComic = id;
+        idCounterOfComics++;
+        idComic = idCounterOfComics;
     }
-
-    public ComicBook(String comicBookName, int numberOfComics){
-        this.comicBookName = comicBookName;
-        this.numberOfComics = numberOfComics;
-        fullNameAuthor = "fullNameAuthor";
-        comicBookPublisher = "comicBookPublisher";
-        numberOfPages = 125;
-        genreComics = COMEDY;
-        costPrice = BigDecimal.valueOf(15);
-        salePrice = BigDecimal.valueOf(15);
-        yearPublication = 1999;
-        comicBookSeries = "other";
-        inputData = LocalDate.parse("15.02.2020", DateTimeFormatter.ofPattern("dd.MM.yyyy"));
-        id++;
-        idComic = id;
-    }
-
 
     /**
      * Контруктор при создании объекта через ввод данных.
      */
 
     public ComicBook() {
-        id++;
-        idComic = id;
+        idCounterOfComics++;
+        idComic = idCounterOfComics;
     }
 
-    public static int getId() {                                         // Получение общего id(общий id изменять нельзя)
-        return id;
+    public static int getIdCounterOfComics() {                                         // Получение общего id(общий id изменять нельзя)
+        return idCounterOfComics;
     }
 
     public int getIdComic() {                                          // Id у комикса устанавливается один раз и неизм.
@@ -140,7 +123,7 @@ public class ComicBook implements Cloneable, Serializable {
         this.yearPublication = yearPublication;
     }
 
-    public String getComicBookSeries() {                         // Получение серии комикса
+    public String getComicBookSeries() {
         return comicBookSeries;
     }
 
@@ -165,7 +148,7 @@ public class ComicBook implements Cloneable, Serializable {
     }
 
     public void warningSetId(int idComic){
-      id = idComic;
+      idCounterOfComics = idComic;
     }
 
     @Override

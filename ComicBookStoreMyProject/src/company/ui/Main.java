@@ -1,7 +1,7 @@
 package company.ui;
 
-import company.repository.ReadComicAndClient;
-import company.repository.SaveComicBookAndClient;
+import company.repository.ReadComicAndClientRepository;
+import company.repository.SaveComicBookAndClientRepository;
 import company.services.ComicBookSalesman;
 import company.services.PrintHelper;
 import javafx.application.Application;
@@ -18,8 +18,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        ReadComicAndClient readComicAndClient = new ReadComicAndClient();
-        readComicAndClient.readAll();
+        ReadComicAndClientRepository readComicAndClientRepository = new ReadComicAndClientRepository();
+        readComicAndClientRepository.readAll();
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(PrintHelper.ADDRESS_START_MENU)));
         primaryStage.setScene(new Scene(root, 700, 400));
         primaryStage.show();
@@ -27,8 +27,8 @@ public class Main extends Application {
 
     @Override
     public void stop() {
-        SaveComicBookAndClient saveComicBookAndClient = new SaveComicBookAndClient();
-        saveComicBookAndClient.saveAll();
+        SaveComicBookAndClientRepository saveComicBookAndClientRepository = new SaveComicBookAndClientRepository();
+        saveComicBookAndClientRepository.saveAll();
     }
 
 

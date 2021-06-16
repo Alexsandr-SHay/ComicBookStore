@@ -1,9 +1,6 @@
 package company.ui;
 
-import company.domain.Client;
-import company.domain.ComicBook;
-import company.domain.GenreComics;
-import company.repository.SaveComicBookAndClient;
+import company.repository.SaveComicBookAndClientRepository;
 import company.services.PrintHelper;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,8 +13,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.util.ArrayList;
 
 /**
  * Класс предстовляющий собой основной инфтерфейс пользователя для работы комиксами(основное меню).
@@ -120,69 +115,11 @@ public class MenuController {
         buttonSaveProject.setOnAction(actionEvent -> saveProject());
 
         buttonSearchSaleComic.setOnAction(actionEvent -> searchSaleComic());
-
-//        ComicBook comicBook1 = new ComicBook("Человек паук", "Стэн Ли",
-//                "Marvel", 45, GenreComics.FANTASY, BigDecimal.valueOf(152),
-//                BigDecimal.valueOf(180), 1962, "Spider-Man", 5,
-//                "14.06.2021");
-//        ComicBook comicBook2 = new ComicBook("Человек паук против зелёного гоблина", "Стэн Ли",
-//                "DC Comics", 102, GenreComics.FANTASY, BigDecimal.valueOf(300),
-//                BigDecimal.valueOf(450), 1960, "Spider-Man", 3,
-//                "14.06.2021");
-//        ComicBook comicBook3 = new ComicBook("Бэтмен", "Боб Кейн",
-//                "DC Comics", 91, GenreComics.DETECTIVE, BigDecimal.valueOf(280),
-//                BigDecimal.valueOf(400), 1939, "Batman", 6,
-//                "06.03.2019");
-//        ComicBook comicBook4 = new ComicBook("Бэтмен и Робин", "Фингер Билл",
-//                "DC Comics", 54, GenreComics.DETECTIVE, BigDecimal.valueOf(120),
-//                BigDecimal.valueOf(180), 1946, "Batman", 4,
-//                "01.06.2020");
-//        ComicBook comicBook5 = new ComicBook("Бэтмен и джокер", "Фингер Билл",
-//                "DC Comics", 91, GenreComics.DETECTIVE, BigDecimal.valueOf(280),
-//                BigDecimal.valueOf(400), 2046, "Batman", 2, "15.01.2021");
-//        ComicBook comicBook6 = new ComicBook("Тетрадь смерти", "Цугуми Оба",
-//                " Weekly Shonen Jump ", 80, GenreComics.MYSTICISM, BigDecimal.valueOf(120),
-//                BigDecimal.valueOf(180), 2003, " Death Note", 1, "12.06.2021");
-//        ComicBook comicBook7 = new ComicBook("Первый русский комикс", "Андрей Иванов",
-//                "Росма", 30, GenreComics.OTHER, BigDecimal.valueOf(50),
-//                BigDecimal.valueOf(60), 2009, "Russian comic", 10, "01.05.2021");
-//        ComicBook comicBook8 = new ComicBook("Берсерк", "Кэнтаро Миура",
-//                "Hakusensha", 90, GenreComics.HORROR, BigDecimal.valueOf(80),
-//                BigDecimal.valueOf(100), 1997, "Berserk", 8, "07.04.2021");
-//        ComicBook comicBook9 = new ComicBook("Берсерк 2", "Кэнтаро Миура",
-//                "Росма", 61, GenreComics.MYSTICISM, BigDecimal.valueOf(40),
-//                BigDecimal.valueOf(60), 1999, "Berserk", 2, "08.05.2021");
-//        ComicBook comicBook10 = new ComicBook("Халк", "Стэн Ли",
-//                "Marvel", 28, GenreComics.FANTASY, BigDecimal.valueOf(32),
-//                BigDecimal.valueOf(45), 1982, "Hulk", 2, "08.05.2021");
-//
-//
-//        Client client1 = new Client("Сидоров Алексей", new ArrayList<>(), "89991234567");
-//        Client client2 = new Client("Иванов Иван", new ArrayList<>(), "89992345678");
-//        Client client3 = new Client("Петров Пётр", new ArrayList<>(), "89993456789");
-//        Client client4 = new Client("Семенов Андрей", new ArrayList<>(), "89994567891");
-//        Client client5 = new Client("Алексеенко Роман", new ArrayList<>(), "89995678912");
-//
-//        Main.comicBookSalesman.addComic(comicBook1);
-//        Main.comicBookSalesman.addComic(comicBook2);
-//        Main.comicBookSalesman.addComic(comicBook3);
-//        Main.comicBookSalesman.addComic(comicBook4);
-//        Main.comicBookSalesman.addComic(comicBook5);
-//        Main.comicBookSalesman.addComic(comicBook6);
-//        Main.comicBookSalesman.addComic(comicBook7);
-//        Main.comicBookSalesman.addComic(comicBook8);
-//        Main.comicBookSalesman.addComic(comicBook9);
-//        Main.comicBookSalesman.addComic(comicBook10);
-//        Main.comicBookSalesman.addClient(client1);
-//        Main.comicBookSalesman.addClient(client2);
-//        Main.comicBookSalesman.addClient(client3);
-//        Main.comicBookSalesman.addClient(client4);
-//        Main.comicBookSalesman.addClient(client5);
     }
 
     private void saveProject() {
-        SaveComicBookAndClient saveComicBookAndClient = new SaveComicBookAndClient();
-        saveComicBookAndClient.saveAll();
+        SaveComicBookAndClientRepository saveComicBookAndClientRepository = new SaveComicBookAndClientRepository();
+        saveComicBookAndClientRepository.saveAll();
     }
 
     private void changingTheScreen(String string) {
