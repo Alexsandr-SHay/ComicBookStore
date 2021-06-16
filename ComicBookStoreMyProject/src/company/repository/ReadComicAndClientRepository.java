@@ -24,11 +24,11 @@ public class ReadComicAndClientRepository {
     }
 
     public void readListComics() {
-       readComicBook(Main.comicBookSalesman.getListComic(), PrintHelper.SAVE_AND_READ_LIST_COMIC);
+       readComicBook(Main.serviceWorkingWithComics.getListComic(), PrintHelper.SAVE_AND_READ_LIST_COMIC);
     }
 
     public void readListComicsSold() {
-        readComicBook(Main.comicBookSalesman.getListComicsSold(), PrintHelper.SAVE_AND_READ_LIST_COMIC_SOLD);
+        readComicBook(Main.serviceWorkingWithComics.getListComicsSold(), PrintHelper.SAVE_AND_READ_LIST_COMIC_SOLD);
     }
 
     private void readComicBook(List<ComicBook> arrays, String way) {
@@ -44,7 +44,7 @@ public class ReadComicAndClientRepository {
     }
 
     public void readListClient() {
-       readClient(Main.comicBookSalesman.getClientList(), PrintHelper.SAVE_AND_READ_LIST_CLIENT);
+       readClient(Main.serviceWorkingWithComics.getClientList(), PrintHelper.SAVE_AND_READ_LIST_CLIENT);
     }
 
     private void readClient(List<Client> arrays, String way) {

@@ -2,7 +2,7 @@ package company.ui;
 
 import company.repository.ReadComicAndClientRepository;
 import company.repository.SaveComicBookAndClientRepository;
-import company.services.ComicBookSalesman;
+import company.services.ServiceWorkingWithComics;
 import company.services.PrintHelper;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -14,7 +14,7 @@ import java.util.Objects;
 
 public class Main extends Application {
 
-    public static ComicBookSalesman comicBookSalesman = new ComicBookSalesman();
+    public static ServiceWorkingWithComics serviceWorkingWithComics = ServiceWorkingWithComics.INSTANCE;
 
     @Override
     public void start(Stage primaryStage) throws Exception {

@@ -186,15 +186,15 @@ public class MenuController {
         if (!string.isEmpty()) {
             switch (checkBoxSearchCatalog.getValue()) {
                 case (PrintHelper.SEARCH_BY_NAME) -> {
-                    Main.comicBookSalesman.searchForComicByTitle(string);
+                    Main.serviceWorkingWithComics.searchForComicByTitle(string);
                     goToSearchScreen();
                 }
                 case (PrintHelper.SEARCH_BY_AUTHOR) -> {
-                    Main.comicBookSalesman.searchForComicByAuthor(string);
+                    Main.serviceWorkingWithComics.searchForComicByAuthor(string);
                     goToSearchScreen();
                 }
                 case (PrintHelper.SEARCH_BY_GENRE) -> {
-                    Main.comicBookSalesman.searchForComicsByGenre(PrintHelper.checkGenreComics(string));
+                    Main.serviceWorkingWithComics.searchForComicsByGenre(PrintHelper.checkGenreComics(string));
                     goToSearchScreen();
                 }
             }
@@ -206,19 +206,19 @@ public class MenuController {
     private void searchPopularNewComics() {
         switch (checkBoxSearchNewComic.getValue()) {
             case (PrintHelper.SEARCH_PER_DAY) -> {
-                Main.comicBookSalesman.popularNewComicsForTheDay();
+                Main.serviceWorkingWithComics.popularNewComicsForTheDay();
                 goToSearchScreen();
             }
             case (PrintHelper.SEARCH_PER_WEEK) -> {
-                Main.comicBookSalesman.popularNewComicsForTheWeek();
+                Main.serviceWorkingWithComics.popularNewComicsForTheWeek();
                 goToSearchScreen();
             }
             case (PrintHelper.SEARCH_PER_MONTH) -> {
-                Main.comicBookSalesman.popularNewComicsForTheMonth();
+                Main.serviceWorkingWithComics.popularNewComicsForTheMonth();
                 goToSearchScreen();
             }
             case (PrintHelper.SEARCH_PER_YEARS) -> {
-                Main.comicBookSalesman.popularNewComicsForTheYear();
+                Main.serviceWorkingWithComics.popularNewComicsForTheYear();
                 goToSearchScreen();
             }
         }
@@ -227,19 +227,19 @@ public class MenuController {
     private void searchPopularSearchAuthorComic() {
         switch (checkBoxSearchAuthorComic.getValue()) {
             case (PrintHelper.SEARCH_PER_DAY) -> {
-                Main.comicBookSalesman.popularArtistForTheDay();
+                Main.serviceWorkingWithComics.popularArtistForTheDay();
                 goToSearchScreen();
             }
             case (PrintHelper.SEARCH_PER_WEEK) -> {
-                Main.comicBookSalesman.popularArtistForTheWeek();
+                Main.serviceWorkingWithComics.popularArtistForTheWeek();
                 goToSearchScreen();
             }
             case (PrintHelper.SEARCH_PER_MONTH) -> {
-                Main.comicBookSalesman.popularArtistForTheMonth();
+                Main.serviceWorkingWithComics.popularArtistForTheMonth();
                 goToSearchScreen();
             }
             case (PrintHelper.SEARCH_PER_YEARS) -> {
-                Main.comicBookSalesman.popularArtistForTheYear();
+                Main.serviceWorkingWithComics.popularArtistForTheYear();
                 goToSearchScreen();
             }
         }
@@ -248,19 +248,19 @@ public class MenuController {
     private void searchPopularSearchGenre() {
         switch (checkBoxSearchGenreComic.getValue()) {
             case (PrintHelper.SEARCH_PER_DAY) -> {
-                Main.comicBookSalesman.popularGenreForTheDay();
+                Main.serviceWorkingWithComics.popularGenreForTheDay();
                 goToSearchScreen();
             }
             case (PrintHelper.SEARCH_PER_WEEK) -> {
-                Main.comicBookSalesman.popularGenreForTheWeek();
+                Main.serviceWorkingWithComics.popularGenreForTheWeek();
                 goToSearchScreen();
             }
             case (PrintHelper.SEARCH_PER_MONTH) -> {
-                Main.comicBookSalesman.popularGenreForTheMonth();
+                Main.serviceWorkingWithComics.popularGenreForTheMonth();
                 goToSearchScreen();
             }
             case (PrintHelper.SEARCH_PER_YEARS) -> {
-                Main.comicBookSalesman.popularGenreForTheYear();
+                Main.serviceWorkingWithComics.popularGenreForTheYear();
                 goToSearchScreen();
             }
         }
@@ -269,19 +269,19 @@ public class MenuController {
     private void searchSaleComic() {
         switch (checkBoxSearchSaleComic.getValue()) {
             case (PrintHelper.SEARCH_PER_DAY) -> {
-                Main.comicBookSalesman.popularNewComicsSaleForTheDay();
+                Main.serviceWorkingWithComics.popularNewComicsSaleForTheDay();
                 goToSearchScreen();
             }
             case (PrintHelper.SEARCH_PER_WEEK) -> {
-                Main.comicBookSalesman.popularNewComicsSaleForTheWeek();
+                Main.serviceWorkingWithComics.popularNewComicsSaleForTheWeek();
                 goToSearchScreen();
             }
             case (PrintHelper.SEARCH_PER_MONTH) -> {
-                Main.comicBookSalesman.popularNewComicsSaleForTheMonth();
+                Main.serviceWorkingWithComics.popularNewComicsSaleForTheMonth();
                 goToSearchScreen();
             }
             case (PrintHelper.SEARCH_PER_YEARS) -> {
-                Main.comicBookSalesman.popularNewComicsSaleForTheYear();
+                Main.serviceWorkingWithComics.popularNewComicsSaleForTheYear();
                 goToSearchScreen();
             }
         }

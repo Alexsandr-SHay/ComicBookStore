@@ -85,10 +85,10 @@ public class MenuClient {
         String textClient = fieldNameClient.getText();
         String textPhone = fieldNumberPhone.getText();
         try {
-            labelResult.setText(PrintHelper.CLIENT_EXISTS + Main.comicBookSalesman.searchClientOnName(textClient).getIdClient());
+            labelResult.setText(PrintHelper.CLIENT_EXISTS + Main.serviceWorkingWithComics.searchClientOnName(textClient).getIdClient());
         } catch (NoSuchElementException ignored) {
             if (!textClient.isEmpty() && !textPhone.isEmpty()) {
-                Main.comicBookSalesman.addClient(new Client(textClient, new ArrayList<>(),
+                Main.serviceWorkingWithComics.addClient(new Client(textClient, new ArrayList<>(),
                         PrintHelper.checkNumberPhone(textPhone)));
                 labelResult.setText(PrintHelper.CLIENT_ADDED);
             } else {
@@ -118,12 +118,12 @@ public class MenuClient {
     }
 
     private void showClient() {
-        textArea.appendText(PrintHelper.editingTheOutputToTheScreen(Main.comicBookSalesman.getClientList()));
+        textArea.appendText(PrintHelper.editingTheOutputToTheScreen(Main.serviceWorkingWithComics.getClientList()));
     }
 
     private void deleteClient() {
         try {
-            Main.comicBookSalesman.clientDelete(checkDataClientName());
+            Main.serviceWorkingWithComics.clientDelete(checkDataClientName());
         } catch (NoSuchElementException e) {
             labelResult.setText(PrintHelper.CLIENT_NOT_FOUND);
         }
@@ -153,13 +153,13 @@ public class MenuClient {
         String text = fieldNameClient.getText();
         try {
             int value = Integer.parseInt(text);
-            return Main.comicBookSalesman.searchClientOnId(value);
+            return Main.serviceWorkingWithComics.searchClientOnId(value);
         } catch (NoSuchElementException e) {
             labelResult.setText(PrintHelper.CLIENT_NOT_FOUND);
         } catch (NumberFormatException e) {
             labelResult.setText(PrintHelper.CLIENT_NOT_FOUND);
             try {
-                return Main.comicBookSalesman.searchClientOnName(text);
+                return Main.serviceWorkingWithComics.searchClientOnName(text);
             } catch (NoSuchElementException ignored) {
                 labelResult.setText(PrintHelper.CLIENT_NOT_FOUND);
             }
@@ -170,7 +170,7 @@ public class MenuClient {
     private Client checkDataClientPhone() {
         String text = fieldNumberPhone.getText();
         try {
-            return Main.comicBookSalesman.searchClientOnPhone(text);
+            return Main.serviceWorkingWithComics.searchClientOnPhone(text);
         } catch (NoSuchElementException | NumberFormatException e) {
             labelResult.setText(PrintHelper.CLIENT_NOT_FOUND);
             return new Client();

@@ -72,12 +72,12 @@ public class MenuReservingComicBook {
     }
 
     private void showClient() {
-        textArea.appendText(PrintHelper.editingTheOutputToTheScreen(Main.comicBookSalesman.getClientList()));
+        textArea.appendText(PrintHelper.editingTheOutputToTheScreen(Main.serviceWorkingWithComics.getClientList()));
     }
 
     private void reversingComicBook() {
         try {
-            Main.comicBookSalesman.comicBookReserving(checkDataComic(), checkDataClient(),
+            Main.serviceWorkingWithComics.comicBookReserving(checkDataComic(), checkDataClient(),
                     PrintHelper.checkNumberOfComic(fieldNumberOfComics.getText()));
             labelResult.setText(PrintHelper.COMIC_BOOK_RESERVED);
             clearField();
@@ -88,7 +88,7 @@ public class MenuReservingComicBook {
 
     private void saleResrvingComicBook() {
         try {
-            Main.comicBookSalesman.saleComicBookReserving(checkingComicBookWithClient(), checkDataClient(),
+            Main.serviceWorkingWithComics.saleComicBookReserving(checkingComicBookWithClient(), checkDataClient(),
                     PrintHelper.checkNumberOfComic(fieldNumberOfComics.getText()));
             labelResult.setText(PrintHelper.COMIC_BOOK_RESERVED_SALE);
             clearField();
@@ -99,7 +99,7 @@ public class MenuReservingComicBook {
 
     private void reservation() {
         try {
-            Main.comicBookSalesman.returnComicBookReserving(checkingComicBookWithClient(), checkDataClient(),
+            Main.serviceWorkingWithComics.returnComicBookReserving(checkingComicBookWithClient(), checkDataClient(),
                     PrintHelper.checkNumberOfComic(fieldNumberOfComics.getText()));
             labelResult.setText(PrintHelper.COMIC_BOOK_RESERVATION);
             clearField();
@@ -138,13 +138,13 @@ public class MenuReservingComicBook {
         String text = fieldComicBookName.getText();
         try {
             int value = Integer.parseInt(text);
-            return Main.comicBookSalesman.searchObjectComicBook(value);
+            return Main.serviceWorkingWithComics.searchObjectComicBook(value);
         } catch (NoSuchElementException e) {
             labelResult.setText(PrintHelper.COMIC_BOOK_NOT_FOUND);
         } catch (NumberFormatException e) {
             labelResult.setText(PrintHelper.COMIC_BOOK_NOT_FOUND);
             try {
-                return Main.comicBookSalesman.searchObjectComicBook(text);
+                return Main.serviceWorkingWithComics.searchObjectComicBook(text);
             } catch (NoSuchElementException ignored) {
                 labelResult.setText(PrintHelper.COMIC_BOOK_NOT_FOUND);
             }
@@ -156,13 +156,13 @@ public class MenuReservingComicBook {
         String text = fieldNameClient.getText();
         try {
             int value = Integer.parseInt(text);
-            return Main.comicBookSalesman.searchClientOnId(value);
+            return Main.serviceWorkingWithComics.searchClientOnId(value);
         } catch (NoSuchElementException e) {
             labelResult.setText(PrintHelper.COMIC_BOOK_NOT_FOUND);
         } catch (NumberFormatException e) {
             labelResult.setText(PrintHelper.COMIC_BOOK_NOT_FOUND);
             try {
-                return Main.comicBookSalesman.searchClientOnName(text);
+                return Main.serviceWorkingWithComics.searchClientOnName(text);
             } catch (NoSuchElementException ignored) {
                 labelResult.setText(PrintHelper.COMIC_BOOK_NOT_FOUND);
             }
@@ -175,13 +175,13 @@ public class MenuReservingComicBook {
         String text = fieldComicBookName.getText();
         try {
             int value = Integer.parseInt(text);
-            return Main.comicBookSalesman.searchObjectComicBookClient(value, client);
+            return Main.serviceWorkingWithComics.searchObjectComicBookClient(value, client);
         } catch (NoSuchElementException e) {
             labelResult.setText(PrintHelper.COMIC_BOOK_NOT_FOUND);
         } catch (NumberFormatException e) {
             labelResult.setText(PrintHelper.COMIC_BOOK_NOT_FOUND);
             try {
-                return Main.comicBookSalesman.searchObjectComicBookClient(text, client);
+                return Main.serviceWorkingWithComics.searchObjectComicBookClient(text, client);
             } catch (NoSuchElementException ignored) {
                 labelResult.setText(PrintHelper.COMIC_BOOK_NOT_FOUND);
             }

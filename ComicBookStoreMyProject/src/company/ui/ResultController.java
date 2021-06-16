@@ -47,8 +47,8 @@ public class ResultController {
             stage.show();
         });
 
-        textAreaLstComic.appendText(PrintHelper.editingTheOutputToTheScreen(Main.comicBookSalesman.getListComic()));
-        textAreaListClient.appendText(PrintHelper.editingTheOutputToTheScreen(Main.comicBookSalesman.getClientList()));
-        textAreaListSaleComic.appendText(PrintHelper.editingTheOutputToTheScreen(Main.comicBookSalesman.getListComicsSold()));
+        textAreaLstComic.appendText(PrintHelper.editingTheOutputToTheScreen(Main.serviceWorkingWithComics.getListComic()));
+        textAreaListClient.appendText(PrintHelper.editingTheOutputToTheScreen(Main.serviceWorkingWithComics.getClientList()));
+        textAreaListSaleComic.appendText(PrintHelper.editingTheOutputToTheScreen(Main.serviceWorkingWithComics.getListComicsSold()));
     }
 }

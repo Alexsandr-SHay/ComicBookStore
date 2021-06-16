@@ -71,7 +71,7 @@ public class MenuDeleteWriteOffSaleComic {
     private void deleteComicId() {
         int id = checkNumberOfComic(fieldComicBookId.getText().trim());
         if (id > 0) {
-            if (Main.comicBookSalesman.deletingComicById(id)) {
+            if (Main.serviceWorkingWithComics.deletingComicById(id)) {
                 labelResult.setText(PrintHelper.COMIC_WAS_SUCCESSFULLY_DELETED);
             } else {
                 labelResult.setText(PrintHelper.COMIC_BOOK_NOT_FOUND);
@@ -83,7 +83,7 @@ public class MenuDeleteWriteOffSaleComic {
     }
 
     private void deleteComicName() {
-        if (Main.comicBookSalesman.deletingComicByName(fieldComicBookName.getText().trim())) {
+        if (Main.serviceWorkingWithComics.deletingComicByName(fieldComicBookName.getText().trim())) {
             labelResult.setText(PrintHelper.COMIC_WAS_SUCCESSFULLY_DELETED);
         } else {
             labelResult.setText(PrintHelper.COMIC_BOOK_NOT_FOUND);
@@ -95,7 +95,7 @@ public class MenuDeleteWriteOffSaleComic {
         int id = checkNumberOfComic(fieldComicBookId.getText().trim());
         int numberOfComics = checkNumberOfComic(fieldNumberOfComics.getText().trim());
         if (id > 0 && numberOfComics > 0) {
-            if (Main.comicBookSalesman.writeOffComicBookById(id, numberOfComics)) {
+            if (Main.serviceWorkingWithComics.writeOffComicBookById(id, numberOfComics)) {
                 labelResult.setText(PrintHelper.COMIC_WAS_SUCCESSFULLY_WRITE_OFF);
             } else {
                 labelResult.setText(PrintHelper.COMIC_BOOK_NOT_FOUND);
@@ -109,7 +109,7 @@ public class MenuDeleteWriteOffSaleComic {
     private void writeOffComicName() {
         int numberOfComics = checkNumberOfComic(fieldNumberOfComics.getText().trim());
         if (numberOfComics > 0) {
-            if (Main.comicBookSalesman.writeOffComicByName(fieldComicBookName.getText().trim(), numberOfComics)) {
+            if (Main.serviceWorkingWithComics.writeOffComicByName(fieldComicBookName.getText().trim(), numberOfComics)) {
                 labelResult.setText(PrintHelper.COMIC_WAS_SUCCESSFULLY_WRITE_OFF);
             } else {
                 labelResult.setText(PrintHelper.COMIC_BOOK_NOT_FOUND);
@@ -124,7 +124,7 @@ public class MenuDeleteWriteOffSaleComic {
         int id = checkNumberOfComic(fieldComicBookId.getText().trim());
         int numberOfComics = checkNumberOfComic(fieldNumberOfComics.getText().trim());
         if (id > 0 && numberOfComics > 0) {
-            if (Main.comicBookSalesman.comicBookSalesById(id, numberOfComics)) {
+            if (Main.serviceWorkingWithComics.comicBookSalesById(id, numberOfComics)) {
                 labelResult.setText(PrintHelper.COMIC_WAS_SUCCESSFULLY_SALE);
             } else {
                 labelResult.setText(PrintHelper.COMIC_BOOK_NOT_FOUND);
@@ -138,7 +138,7 @@ public class MenuDeleteWriteOffSaleComic {
     private void saleComicBookName() {
         int numberOfComics = checkNumberOfComic(fieldNumberOfComics.getText().trim());
         if (numberOfComics > 0) {
-            if (Main.comicBookSalesman.comicBookSalesByName(fieldComicBookName.getText().trim(), numberOfComics)) {
+            if (Main.serviceWorkingWithComics.comicBookSalesByName(fieldComicBookName.getText().trim(), numberOfComics)) {
                 labelResult.setText(PrintHelper.COMIC_WAS_SUCCESSFULLY_SALE);
             } else {
                 labelResult.setText(PrintHelper.COMIC_BOOK_NOT_FOUND);

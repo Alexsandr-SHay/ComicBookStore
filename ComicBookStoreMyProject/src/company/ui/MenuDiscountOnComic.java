@@ -67,7 +67,7 @@ public class MenuDiscountOnComic {
         String name = fieldComicBookName.getText();
         BigDecimal value = checkDiscountComic(fieldDiscount.getText());
         if (checkInputData(name, value)) {
-            Main.comicBookSalesman.makeDiscountOnComicByName(name, value);
+            Main.serviceWorkingWithComics.makeDiscountOnComicByName(name, value);
             labelResult.setText(PrintHelper.DISCOUNT_YES);
             clearField();
         }
@@ -78,7 +78,7 @@ public class MenuDiscountOnComic {
         BigDecimal value = checkDiscountComic(fieldDiscount.getText());
         int id = checkIdComic(name);
         if (checkInputData(name, value)) {
-            Main.comicBookSalesman.makeDiscountOnComicByID(id, value);
+            Main.serviceWorkingWithComics.makeDiscountOnComicByID(id, value);
             labelResult.setText(PrintHelper.DISCOUNT_YES);
             clearField();
         }
@@ -87,7 +87,7 @@ public class MenuDiscountOnComic {
     private void discountALL() {
         BigDecimal value = checkDiscountComic(fieldDiscount.getText());
         if (value.compareTo(BigDecimal.ZERO) > 0) {
-            Main.comicBookSalesman.makeDiscountOnALLComic(value);
+            Main.serviceWorkingWithComics.makeDiscountOnALLComic(value);
             labelResult.setText(PrintHelper.DISCOUNT_YES);
             clearField();
         } else {
@@ -99,7 +99,7 @@ public class MenuDiscountOnComic {
         String series = fieldComicBookName.getText();
         BigDecimal value = checkDiscountComic(fieldDiscount.getText());
         if (checkInputData(series, value)) {
-            Main.comicBookSalesman.makeDiscountOncomicBookSeries(series, value);
+            Main.serviceWorkingWithComics.makeDiscountOncomicBookSeries(series, value);
             labelResult.setText(PrintHelper.DISCOUNT_YES);
             clearField();
         }
@@ -110,7 +110,7 @@ public class MenuDiscountOnComic {
         BigDecimal value = checkDiscountComic(fieldDiscount.getText());
         Enum<GenreComics> genreComicsEnum = PrintHelper.checkGenreComics(name);
         if (checkInputData(name, value)) {
-            Main.comicBookSalesman.makeDiscountOncomicBookGenre(genreComicsEnum, value);
+            Main.serviceWorkingWithComics.makeDiscountOncomicBookGenre(genreComicsEnum, value);
             labelResult.setText(PrintHelper.DISCOUNT_YES);
             clearField();
         }

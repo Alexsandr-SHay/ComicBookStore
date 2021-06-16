@@ -23,12 +23,13 @@ import java.util.stream.Collectors;
  */
 
 
-public class ComicBookSalesman implements Cloneable, Serializable {
+public class ServiceWorkingWithComics implements Serializable {
+    public static final ServiceWorkingWithComics INSTANCE = new ServiceWorkingWithComics();
     private List<ComicBook> listComic;                                    // - Список комиксов в магазине
     private List<ComicBook> listComicsSold;                               // - Список проданых комиксов
     private List<Client> clientList;                                      // - Список Клиентов
 
-    public ComicBookSalesman() {
+    private ServiceWorkingWithComics() {
         listComic = new ArrayList<>();
         listComicsSold = new ArrayList<>();
         clientList = new ArrayList<>();
@@ -289,7 +290,7 @@ public class ComicBookSalesman implements Cloneable, Serializable {
         } else {
             deletingComic(comicBook);
         }
-        return valueWriteOffComicBook;
+        return comicBook.getNumberOfComics();
     }
 
     public boolean writeOffComicByName(String name, int valueWriteOffComicBook) {

@@ -91,7 +91,7 @@ public class AddAndEditComicController {
     private void addComicBook() {
         String comicName = fieldComicBookName.getText();
         int numberOfComic = checkNumberOfComic(fieldNumberOfComics.getText().trim());
-        if (Main.comicBookSalesman.addComic(comicName, numberOfComic)) {
+        if (Main.serviceWorkingWithComics.addComic(comicName, numberOfComic)) {
             labelComicBookName.setText(PrintHelper.COMIC_EXISTS + numberOfComic);
             labelComicBookName.setText(PrintHelper.COMIC_BOOK_ADDED);
             labelINumberOfComics.setText(PrintHelper.NUMBER_OF_COMICS_ADDED + numberOfComic);
@@ -99,7 +99,7 @@ public class AddAndEditComicController {
         } else {
             if (checkComic()) {
                 labelComicBookName.setText(PrintHelper.COMIC_BOOK_WITH_THIS_NAME_WAS_NOT_FOUND);
-                Main.comicBookSalesman.addComic(checkData(fieldComicBookName),
+                Main.serviceWorkingWithComics.addComic(checkData(fieldComicBookName),
                         checkData(fieldFullNameAuthor),
                         checkData(fieldComicBookPublisher),
                         PrintHelper.dataInputInteger(fieldNumberOfPages.getText().trim()),
@@ -120,9 +120,9 @@ public class AddAndEditComicController {
 
     private void editComicName() {
         String comicName = fieldComicBookName.getText();
-        if (Main.comicBookSalesman.checkComicBookName(comicName)) {
+        if (Main.serviceWorkingWithComics.checkComicBookName(comicName)) {
             if (checkComic()) {
-                Main.comicBookSalesman.editComicByName(
+                Main.serviceWorkingWithComics.editComicByName(
                         checkData(fieldComicBookName),
                         checkData(fieldFullNameAuthor),
                         checkData(fieldComicBookPublisher),
@@ -146,9 +146,9 @@ public class AddAndEditComicController {
 
     private void editComicId() {
         int comicId = checkNumberOfComic(fieldComicBookId.getText());
-        if (Main.comicBookSalesman.checkComicBookId(comicId)) {
+        if (Main.serviceWorkingWithComics.checkComicBookId(comicId)) {
             if (checkComic()) {
-                Main.comicBookSalesman.editComicById(
+                Main.serviceWorkingWithComics.editComicById(
                         comicId,
                         checkData(fieldComicBookName),
                         checkData(fieldFullNameAuthor),
