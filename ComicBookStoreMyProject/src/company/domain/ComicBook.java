@@ -1,4 +1,4 @@
-package domain;
+package company.domain;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -6,6 +6,8 @@ import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+
+import static company.domain.GenreComics.COMEDY;
 
 /**
  * Класс комикс хранит в себе всю информацию о комиксе:
@@ -17,7 +19,7 @@ import java.time.format.DateTimeParseException;
  */
 
 public class ComicBook implements Cloneable, Serializable {
-    private static int id = 1;                         //Статический индификатор занесённых комиксов
+    private static int idCounterOfComics = 1;          //Статический индификатор занесённых комиксов
     private final int idComic;                         // Индификатор конкретного комикса
     private String comicBookName;                      // Название коммикса
     private String fullNameAuthor;                     // ФИО автора
@@ -52,8 +54,8 @@ public class ComicBook implements Cloneable, Serializable {
             this.inputData = LocalDate.parse(inputData, DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         } catch (DateTimeParseException e) {
             this.inputData = LocalDate.now();        }
-        id++;
-        idComic = id;
+        idCounterOfComics++;
+        idComic = idCounterOfComics;
     }
 
     /**
@@ -61,12 +63,12 @@ public class ComicBook implements Cloneable, Serializable {
      */
 
     public ComicBook() {
-        id++;
-        idComic = id;
+        idCounterOfComics++;
+        idComic = idCounterOfComics;
     }
 
-    public static int getId() {                                         // Получение общего id(общий id изменять нельзя)
-        return id;
+    public static int getIdCounterOfComics() {                                         // Получение общего id(общий id изменять нельзя)
+        return idCounterOfComics;
     }
 
     public int getIdComic() {                                          // Id у комикса устанавливается один раз и неизм.
@@ -89,16 +91,8 @@ public class ComicBook implements Cloneable, Serializable {
         this.fullNameAuthor = fullNameAuthor;
     }
 
-    public String getComicBookPublisher() {                           // Получение названия издательства
-        return comicBookPublisher;
-    }
-
     public void setComicBookPublisher(String comicBookPublisher) {    // Изменение названия издательства
         this.comicBookPublisher = comicBookPublisher;
-    }
-
-    public int getNumberOfPages() {                                  // Получение количества страниц
-        return numberOfPages;
     }
 
     public void setNumberOfPages(int numberOfPages) {                // Изменение количества страниц
@@ -113,10 +107,6 @@ public class ComicBook implements Cloneable, Serializable {
         this.genreComics = genreComics;
     }
 
-    public BigDecimal getCostPrice() {                              // Получение цены себестоймости комикса
-        return costPrice;
-    }
-
     public void setCostPrice(BigDecimal costPrice) {               // Изменение цены себестоймости комикса
         this.costPrice = costPrice;
     }
@@ -129,15 +119,11 @@ public class ComicBook implements Cloneable, Serializable {
         this.salePrice = salePrice;
     }
 
-    public int getYearPublication() {                         // Получение года издательства комикса
-        return yearPublication;
-    }
-
     public void setYearPublication(int yearPublication) {     // Изменение года издательства комикса
         this.yearPublication = yearPublication;
     }
 
-    public String getComicBookSeries() {                         // Получение серии комикса
+    public String getComicBookSeries() {
         return comicBookSeries;
     }
 
@@ -161,21 +147,25 @@ public class ComicBook implements Cloneable, Serializable {
         this.inputData = inputData;
     }
 
+    public void warningSetId(int idComic){
+      idCounterOfComics = idComic;
+    }
+
     @Override
     public String toString() {
         return "Комикс " +
-                "ID Комикса = " + idComic +
-                ", Название комикса - " + comicBookName +
-                ", Количество комиксов = " + numberOfComics +
-                ", ФИО автора - " + fullNameAuthor +
-                ", Название издательства - " + comicBookPublisher +
-                ", Количество страниц = " + numberOfPages +
-                ", Жанр - " + genreComics +
-                ", Закупочная цена = " + costPrice.setScale(2, RoundingMode.CEILING) +
-                ", Цена продажи = " + salePrice.setScale(2, RoundingMode.CEILING) +
-                ", Год издания - " + yearPublication +
-                ", Серия комиксов - " + comicBookSeries +
-                ", Дата появления - " + inputData.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")) + '\n';
+                "ID = " + idComic + ';' +
+                ", Название комикса - " + comicBookName + ';' +
+                ", Количество комиксов = " + numberOfComics + ';' + '\n' +
+                ", ФИО автора - " + fullNameAuthor + ';' +
+                ", Название издательства - " + comicBookPublisher + ';' +
+                ", Количество страниц = " + numberOfPages + ';' +
+                ", Жанр - " + genreComics + ';' + '\n' +
+                ", Закупочная цена = " + costPrice.setScale(2, RoundingMode.CEILING) + ';' +
+                ", Цена продажи = " + salePrice.setScale(2, RoundingMode.CEILING) + ';' +
+                ", Год издания - " + yearPublication + ';' + '\n' +
+                ", Серия комиксов - " + comicBookSeries + ';' +
+                ", Дата появления - " + inputData.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")) + ';' + '\n' + '\n';
     }
 
     @Override
